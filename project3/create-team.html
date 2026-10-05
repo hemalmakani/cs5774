@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <meta
+      name="description"
+      content="Fantasy Manager: a Week 7 fantasy football prototype for managing teams and lineups."
+    >
+    <title>Create team | Fantasy Manager</title>
+    <link rel="icon" href="assets/strategists.svg" type="image/svg+xml" >
+    <link rel="stylesheet" href="styles.css" >
+    <!-- jQuery is the only library; its license is retained in the local file. -->
+    <script src="js/vendor/jquery-4.0.0.min.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/interactions.js" defer></script>
+  </head>
+  <body data-page="create-team">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-title" href="index.html">FANTASY MANAGER</a>
+        <form class="site-search" role="search" aria-label="Site search"
+              action="search-results.html" method="get">
+          <label for="site-query" class="sr-only">Search Fantasy Manager</label>
+          <input type="text" id="site-query" name="q" maxlength="80"
+                 placeholder="Try running backs" aria-describedby="search-tip">
+          <button class="button" type="submit">Search</button>
+          <span class="sr-only" id="search-tip">Try the phrase running backs to see sample results.</span>
+        </form>
+        <div class="account-context">
+          <span>Week 7</span><span aria-hidden="true">|</span
+          ><a href="help.html#demo"
+            >Alex <span class="demo-label">Demo</span></a
+          >
+        </div>
+      </div>
+      <nav class="primary-nav" aria-label="Primary">
+        <div class="nav-inner">
+          <a href="index.html">Home</a
+          ><a href="teams.html" aria-current="page">My Teams</a
+          ><a href="scores.html">NFL Scores</a
+          ><a href="player-stats.html">Player Stats</a>
+        </div>
+      </nav>
+    </header>
+    <div class="workspace">
+      <main id="main" tabindex="-1">
+        <noscript
+          ><p class="notice">
+            All sample pages are available. Enable JavaScript to filter teams,
+            search the site, manage a watchlist, create a team, or save lineup changes.
+          </p></noscript
+        >
+
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="teams.html">My teams</a><span aria-hidden="true">/</span
+          ><span>Create team</span>
+        </nav>
+        <div class="page-heading">
+          <div>
+            <h1>Create a team</h1>
+            <p class="lead">Fields marked (required) must be completed.</p>
+          </div>
+        </div>
+        <div class="create-grid">
+          <form id="create-team-form" action="teams.html" method="get">
+            <p class="form-error" id="create-error" role="alert" hidden></p>
+            <div class="form-section">
+              <h2>Team and league details</h2>
+
+              <div class="form-grid">
+                <div class="field">
+                  <label for="team-name">Team name (required)</label
+                  ><input
+                    id="team-name"
+                    aria-describedby="team-name-error"
+                    name="teamName"
+                    required
+                    maxlength="40"
+                    autocomplete="off"
+                    placeholder="e.g. Sunday Strategists"
+                  >
+                  <p id="team-name-error" class="field-error" hidden></p>
+                </div>
+                <div class="field">
+                  <label for="league-name">League name (required)</label
+                  ><input
+                    id="league-name"
+                    aria-describedby="league-name-error"
+                    name="leagueName"
+                    required
+                    maxlength="40"
+                    autocomplete="off"
+                    placeholder="e.g. Friends League"
+                  >
+                  <p id="league-name-error" class="field-error" hidden></p>
+                </div>
+                <div class="field">
+                  <label for="scoring">Scoring format (required)</label
+                  ><select
+                    id="scoring"
+                    name="scoring"
+                    required
+                    aria-describedby="scoring-help scoring-preview"
+                  >
+                    <option value="" disabled>Choose scoring</option>
+                    <option selected>Full PPR</option>
+                    <option>Half PPR</option>
+                    <option>Standard</option></select
+                  ><span class="field-help" id="scoring-help"
+                    >Full PPR means one point per reception. Change the format to compare projections.</span
+                  >
+                  <div id="scoring-preview" role="status" aria-live="polite" aria-atomic="true"></div>
+                </div>
+                <div class="field">
+                  <label for="lineup-rules"
+                    >Starting-lineup rules (required)</label
+                  ><select
+                    id="lineup-rules"
+                    name="rules"
+                    required
+                    aria-describedby="rules-help"
+                  >
+                    <option value="" disabled>Choose lineup rules</option>
+                    <option value="standard" selected>
+                      Standard lineup
+                    </option></select
+                  ><span class="field-help" id="rules-help"
+                    >1 QB, 2 RB, 2 WR, 1 TE, 1 FLEX, 1 DST, 1 K. FLEX accepts
+                    RB, WR or TE. DST means defense and special teams.</span
+                  >
+                </div>
+              </div>
+            </div>
+            <fieldset class="form-section">
+              <legend>Roster (optional)</legend>
+              <p>
+                Choose players individually, or use the full sample roster to
+                try lineup editing.
+              </p>
+              <div class="roster-picker-tools">
+                <div class="field grow">
+                  <label for="roster-search">Find a player</label
+                  ><input
+                    id="roster-search"
+                    type="search"
+                    placeholder="Search players or positions"
+                  >
+                </div>
+                <button class="button secondary" type="button" id="use-sample">
+                  Use sample roster
+                </button>
+              </div>
+              <p id="roster-count" class="result-count" role="status">
+                2 players selected
+              </p>
+              <p id="roster-readiness" class="roster-readiness" role="status">
+                Incomplete roster: 7 starting slots are empty. You can create
+                this team now, but cannot save a lineup until every slot is
+                filled.
+              </p>
+              <div class="player-picker">
+                <label class="player-choice" data-search="alex carter qb"
+                  ><input
+                    type="checkbox"
+                    name="roster"
+                    value="carter"
+                    checked
+                  ><span
+                    ><strong>Alex Carter</strong
+                    ><span class="player-projection">QB · 23.0 projected points</span></span
+                  ></label
+                ><label class="player-choice" data-search="mason cole rb"
+                  ><input type="checkbox" name="roster" value="cole" ><span
+                    ><strong>Mason Cole</strong
+                    ><span class="player-projection">RB · 0.0 projected points</span></span
+                  ></label
+                ><label class="player-choice" data-search="devin reed rb"
+                  ><input type="checkbox" name="roster" value="reed" ><span
+                    ><strong>Devin Reed</strong
+                    ><span class="player-projection">RB · 18.2 projected points</span></span
+                  ></label
+                ><label class="player-choice" data-search="evan brooks wr"
+                  ><input type="checkbox" name="roster" value="brooks" ><span
+                    ><strong>Evan Brooks</strong
+                    ><span class="player-projection">WR · 16.3 projected points</span></span
+                  ></label
+                ><label class="player-choice" data-search="leo grant wr"
+                  ><input type="checkbox" name="roster" value="grant" ><span
+                    ><strong>Leo Grant</strong
+                    ><span class="player-projection">WR · 14.1 projected points</span></span
+                  ></label
+                ><label class="player-choice" data-search="owen hayes te"
+                  ><input type="checkbox" name="roster" value="hayes" ><span
+                    ><strong>Owen Hayes</strong
+                    ><span class="player-projection">TE · 11.4 projected points</span></span
+                  ></label
+                ><label class="player-choice" data-search="noah price wr"
+                  ><input type="checkbox" name="roster" value="price" ><span
+                    ><strong>Noah Price</strong
+                    ><span class="player-projection">WR · 12.4 projected points</span></span
+                  ></label
+                ><label class="player-choice" data-search="bears defense dst"
+                  ><input type="checkbox" name="roster" value="bears" ><span
+                    ><strong>Bears defense</strong
+                    ><span class="player-projection">DST · 7.0 projected points</span></span
+                  ></label
+                ><label class="player-choice" data-search="ryan west k"
+                  ><input type="checkbox" name="roster" value="west" ><span
+                    ><strong>Ryan West</strong
+                    ><span class="player-projection">K · 6.0 projected points</span></span
+                  ></label
+                ><label class="player-choice" data-search="jordan wells rb"
+                  ><input
+                    type="checkbox"
+                    name="roster"
+                    value="wells"
+                    checked
+                  ><span
+                    ><strong>Jordan Wells</strong
+                    ><span class="player-projection">RB · 17.0 projected points</span></span
+                  ></label
+                ><label class="player-choice" data-search="caleb stone rb"
+                  ><input type="checkbox" name="roster" value="stone" ><span
+                    ><strong>Caleb Stone</strong
+                    ><span class="player-projection">RB · 14.0 projected points</span></span
+                  ></label
+                ><label class="player-choice" data-search="sam king te"
+                  ><input type="checkbox" name="roster" value="king" ><span
+                    ><strong>Sam King</strong
+                    ><span class="player-projection">TE · 9.0 projected points</span></span
+                  ></label
+                >
+              </div>
+              <p id="no-players" hidden>No players match your search.</p>
+            </fieldset>
+
+            <div class="form-actions">
+              <a class="button secondary" href="teams.html">Cancel</a
+              ><button class="button" type="submit">
+                Create team <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+      <footer>
+        <div>
+          <span class="footer-brand">FANTASY MANAGER</span
+          ><a href="help.html">Help</a><a href="help.html#privacy">Privacy</a>
+        </div>
+        <span>Week 7 demo · Fictional players and sample scores</span>
+      </footer>
+    </div>
+  </body>
+</html>

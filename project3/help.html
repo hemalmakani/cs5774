@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <meta
+      name="description"
+      content="Fantasy Manager: a Week 7 fantasy football prototype for managing teams and lineups."
+    >
+    <title>Help & scoring | Fantasy Manager</title>
+    <link rel="icon" href="assets/strategists.svg" type="image/svg+xml" >
+    <link rel="stylesheet" href="styles.css" >
+    <!-- jQuery is the only library; its license is retained in the local file. -->
+    <script src="js/vendor/jquery-4.0.0.min.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/interactions.js" defer></script>
+  </head>
+  <body data-page="help">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-title" href="index.html">FANTASY MANAGER</a>
+        <form class="site-search" role="search" aria-label="Site search"
+              action="search-results.html" method="get">
+          <label for="site-query" class="sr-only">Search Fantasy Manager</label>
+          <input type="text" id="site-query" name="q" maxlength="80"
+                 placeholder="Try running backs" aria-describedby="search-tip">
+          <button class="button" type="submit">Search</button>
+          <span class="sr-only" id="search-tip">Try the phrase running backs to see sample results.</span>
+        </form>
+        <div class="account-context">
+          <span>Week 7</span><span aria-hidden="true">|</span
+          ><a href="help.html#demo"
+            >Alex <span class="demo-label">Demo</span></a
+          >
+        </div>
+      </div>
+      <nav class="primary-nav" aria-label="Primary">
+        <div class="nav-inner">
+          <a href="index.html">Home</a><a href="teams.html">My Teams</a
+          ><a href="scores.html">NFL Scores</a
+          ><a href="player-stats.html">Player Stats</a>
+        </div>
+      </nav>
+    </header>
+    <div class="workspace">
+      <main id="main" tabindex="-1">
+        <noscript
+          ><p class="notice">
+            All sample pages are available. Enable JavaScript to filter teams,
+            search the site, manage a watchlist, create a team, or save lineup changes.
+          </p></noscript
+        >
+
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">THE PLAYBOOK</p>
+            <h1>A little help for game day.</h1>
+            <p class="lead">
+              How this prototype works, and what the numbers mean.
+            </p>
+          </div>
+        </div>
+        <div class="help-content">
+          <section id="demo">
+            <h2>Explore as Alex</h2>
+            <p>
+              This is a coursework prototype of Fantasy Manager, using fictional
+              players and a fixed Week 7 scenario. Alex is a demonstration
+              account. There is no sign-in, real league membership or live data
+              connection.
+            </p>
+          </section>
+          <section>
+            <h2 id="lineup-guide">Build a valid lineup</h2>
+            <p>
+              Open a team and choose Edit lineup. Select a bench player, choose
+              an eligible slot, and use Move player. The displaced starter goes
+              to the bench. Undo reverses your last move. Cancel discards all
+              unsaved changes.
+            </p>
+            <p>
+              You need nine starters with no bye-week players before saving.
+              FLEX accepts RB, WR or TE. Questionable players may start, but an
+              amber label keeps their availability visible.
+            </p>
+          </section>
+          <section>
+            <h2 id="scoring-guide">Understand scoring</h2>
+            <p>
+              Full PPR awards one point per reception; Half PPR awards half a
+              point; Standard awards no reception points. For the fictional
+              data, Half PPR subtracts 0.5 times each player’s sample reception
+              estimate from Full PPR, and Standard subtracts the full reception
+              estimate.
+            </p>
+            <p>
+              All projections are illustrative. They are not predictions for
+              real NFL players. QB means quarterback; RB, running back; WR, wide
+              receiver; TE, tight end; DST, defense and special teams; K,
+              kicker.
+            </p>
+          </section>
+          <section id="search-help">
+            <h2>Search and compare players</h2>
+            <p>Type <strong>running backs</strong> in the header search box and choose
+              Search to see three sample players. This is a simulated search;
+              other phrases show a friendly no-results message.</p>
+            <p>In Player Stats, choose Watch to add a player to your watchlist.
+              Choose Remove from watchlist to remove the player. Your choices
+              stay in this browser. In Create a Team, change the scoring format
+              to compare projected points and see a worked example.</p>
+          </section>
+          <section id="privacy">
+            <h2>Your data stays in this browser</h2>
+            <p>
+              Team names, roster choices, saved lineups and your watchlist use local browser
+              storage. There are no accounts, analytics, cookies or external
+              requests from the prototype. Clearing site data removes saved
+              work. If storage is unavailable, the app explains that it cannot
+              save.
+            </p>
+            <p>
+              Use a local web server for consistent storage across pages. With
+              Python installed, open a terminal in the project3 folder
+              and run <code>python3 -m http.server 8765</code>, then open
+              <code>http://localhost:8765/index.html</code> in your browser.
+            </p>
+          </section>
+          <section>
+            <h2>Keyboard &amp; mobile access</h2>
+            <p>
+              Use Tab to reach links and controls, Enter or Space to activate a
+              button, and the arrow keys within select menus. A skip link jumps
+              to the main content. On narrow screens, navigation appears above
+              the content and panels stack vertically.
+            </p>
+          </section>
+        </div>
+      </main>
+      <footer>
+        <div>
+          <span class="footer-brand">FANTASY MANAGER</span
+          ><a href="help.html">Help</a><a href="help.html#privacy">Privacy</a>
+        </div>
+        <span>Week 7 demo · Fictional players and sample scores</span>
+      </footer>
+    </div>
+  </body>
+</html>

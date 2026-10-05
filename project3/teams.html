@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <meta
+      name="description"
+      content="Fantasy Manager: a Week 7 fantasy football prototype for managing teams and lineups."
+    >
+    <title>My teams | Fantasy Manager</title>
+    <link rel="icon" href="assets/strategists.svg" type="image/svg+xml" >
+    <link rel="stylesheet" href="styles.css" >
+    <!-- jQuery is the only library; its license is retained in the local file. -->
+    <script src="js/vendor/jquery-4.0.0.min.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/interactions.js" defer></script>
+  </head>
+  <body data-page="teams">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-title" href="index.html">FANTASY MANAGER</a>
+        <form class="site-search" role="search" aria-label="Site search"
+              action="search-results.html" method="get">
+          <label for="site-query" class="sr-only">Search Fantasy Manager</label>
+          <input type="text" id="site-query" name="q" maxlength="80"
+                 placeholder="Try running backs" aria-describedby="search-tip">
+          <button class="button" type="submit">Search</button>
+          <span class="sr-only" id="search-tip">Try the phrase running backs to see sample results.</span>
+        </form>
+        <div class="account-context">
+          <span>Week 7</span><span aria-hidden="true">|</span
+          ><a href="help.html#demo"
+            >Alex <span class="demo-label">Demo</span></a
+          >
+        </div>
+      </div>
+      <nav class="primary-nav" aria-label="Primary">
+        <div class="nav-inner">
+          <a href="index.html">Home</a
+          ><a href="teams.html" aria-current="page">My Teams</a
+          ><a href="scores.html">NFL Scores</a
+          ><a href="player-stats.html">Player Stats</a>
+        </div>
+      </nav>
+    </header>
+    <div class="workspace">
+      <main id="main" tabindex="-1">
+        <noscript
+          ><p class="notice">
+            All sample pages are available. Enable JavaScript to filter teams,
+            search the site, manage a watchlist, create a team, or save lineup changes.
+          </p></noscript
+        >
+
+        <div class="page-heading">
+          <div>
+            <h1>My teams</h1>
+          </div>
+          <a class="button" href="create-team.html"
+            >Create team <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <form class="filter-bar" id="team-filter" role="search">
+          <div class="field grow">
+            <label for="team-search">Search teams</label
+            ><input
+              type="search"
+              id="team-search"
+              name="search"
+              placeholder="Search by team name"
+            >
+          </div>
+          <div class="field">
+            <label for="league-filter">League</label
+            ><select id="league-filter" name="league">
+              <option value="">All leagues</option>
+              <option>Friends League</option>
+              <option>Office League</option>
+              <option>Family League</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="team-sort">Sort teams</label
+            ><select id="team-sort" name="sort">
+              <option value="default">Original order</option>
+              <option value="attention">Needs attention first</option>
+              <option value="record">Best record first</option>
+              <option value="name">Name A to Z</option>
+            </select>
+          </div>
+          <button class="button secondary" type="reset">Clear filters</button>
+        </form>
+        <p class="result-count" id="team-count" role="status">3 teams</p>
+        <div id="team-list">
+          <article
+            class="team-row"
+            data-team-name="sunday strategists"
+            data-league="Friends League"
+          >
+            <span class="row-index" aria-hidden="true">01</span
+            ><img
+              class="crest"
+              src="assets/strategists.svg"
+              alt="Sunday Strategists team crest"
+              width="96"
+              height="96"
+            >
+            <div class="team-identity">
+              <h2>
+                <a href="team-details.html?team=strategists"
+                  >Sunday Strategists</a
+                >
+              </h2>
+              <p>Friends League <span>·</span> Full PPR</p>
+            </div>
+            <div class="team-record">
+              <span class="small-label">RECORD</span><strong>4–2</strong>
+            </div>
+            <a
+              class="button team-view-link"
+              href="team-details.html?team=strategists"
+              aria-label="View Sunday Strategists"
+              >View team <span aria-hidden="true">↗</span></a
+            >
+          </article>
+          <article
+            class="team-row"
+            data-team-name="red zone runners"
+            data-league="Office League"
+          >
+            <span class="row-index" aria-hidden="true">02</span
+            ><img
+              class="crest"
+              src="assets/runners.svg"
+              alt="Red Zone Runners team crest"
+              width="96"
+              height="96"
+            >
+            <div class="team-identity">
+              <h2>
+                <a href="team-details.html?team=runners">Red Zone Runners</a>
+              </h2>
+              <p>Office League <span>·</span> Full PPR</p>
+            </div>
+            <div class="team-record">
+              <span class="small-label">RECORD</span><strong>3–3</strong>
+            </div>
+            <a
+              class="button team-view-link"
+              href="team-details.html?team=runners"
+              aria-label="View Red Zone Runners"
+              >View team <span aria-hidden="true">↗</span></a
+            >
+          </article>
+          <article
+            class="team-row"
+            data-team-name="goal line giants"
+            data-league="Family League"
+          >
+            <span class="row-index" aria-hidden="true">03</span
+            ><img
+              class="crest"
+              src="assets/giants.svg"
+              alt="Goal Line Giants team crest"
+              width="96"
+              height="96"
+            >
+            <div class="team-identity">
+              <h2>
+                <a href="team-details.html?team=giants">Goal Line Giants</a>
+              </h2>
+              <p>Family League <span>·</span> Full PPR</p>
+            </div>
+            <div class="team-record">
+              <span class="small-label">RECORD</span><strong>5–1</strong>
+            </div>
+            <a
+              class="button team-view-link"
+              href="team-details.html?team=giants"
+              aria-label="View Goal Line Giants"
+              >View team <span aria-hidden="true">↗</span></a
+            >
+          </article>
+        </div>
+        <p class="empty-state" id="no-teams" hidden>
+          No teams match your search. Try another name or clear the filters.
+        </p>
+        <div class="note-line">
+          <span aria-hidden="true">↳</span>
+          <p>
+            Your leagues use the same sample player pool. Commissioner tools are
+            outside this prototype.
+          </p>
+        </div>
+      </main>
+      <footer>
+        <div>
+          <span class="footer-brand">FANTASY MANAGER</span
+          ><a href="help.html">Help</a><a href="help.html#privacy">Privacy</a>
+        </div>
+        <span>Week 7 demo · Fictional players and sample scores</span>
+      </footer>
+    </div>
+  </body>
+</html>

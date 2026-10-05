@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <meta
+      name="description"
+      content="Fantasy Manager: a Week 7 fantasy football prototype for managing teams and lineups."
+    >
+    <title>Team details | Fantasy Manager</title>
+    <link rel="icon" href="assets/strategists.svg" type="image/svg+xml" >
+    <link rel="stylesheet" href="styles.css" >
+    <!-- jQuery is the only library; its license is retained in the local file. -->
+    <script src="js/vendor/jquery-4.0.0.min.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/interactions.js" defer></script>
+  </head>
+  <body data-page="team-details">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-title" href="index.html">FANTASY MANAGER</a>
+        <form class="site-search" role="search" aria-label="Site search"
+              action="search-results.html" method="get">
+          <label for="site-query" class="sr-only">Search Fantasy Manager</label>
+          <input type="text" id="site-query" name="q" maxlength="80"
+                 placeholder="Try running backs" aria-describedby="search-tip">
+          <button class="button" type="submit">Search</button>
+          <span class="sr-only" id="search-tip">Try the phrase running backs to see sample results.</span>
+        </form>
+        <div class="account-context">
+          <span>Week 7</span><span aria-hidden="true">|</span
+          ><a href="help.html#demo"
+            >Alex <span class="demo-label">Demo</span></a
+          >
+        </div>
+      </div>
+      <nav class="primary-nav" aria-label="Primary">
+        <div class="nav-inner">
+          <a href="index.html">Home</a
+          ><a href="teams.html" aria-current="page">My Teams</a
+          ><a href="scores.html">NFL Scores</a
+          ><a href="player-stats.html">Player Stats</a>
+        </div>
+      </nav>
+    </header>
+    <div class="workspace">
+      <main id="main" tabindex="-1">
+        <noscript
+          ><p class="notice">
+            All sample pages are available. Enable JavaScript to filter teams,
+            search the site, manage a watchlist, create a team, or save lineup changes.
+          </p></noscript
+        >
+
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="teams.html">My teams</a><span aria-hidden="true">/</span
+          ><span data-team-name>Sunday Strategists</span>
+        </nav>
+        <div class="page-heading">
+          <div>
+            <h1><span data-team-name>Sunday Strategists</span></h1>
+            <p class="eyebrow">FRIENDS LEAGUE · FULL PPR</p>
+            <p class="lead">
+              Week 7 · Standard lineup ·
+              <span data-team-record>4–2 record</span>
+            </p>
+          </div>
+          <a class="button" href="edit-lineup.html"
+            >Edit lineup <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div
+          class="success-message notice"
+          id="save-notice"
+          role="status"
+          hidden
+        ></div>
+        <div class="notice warning" id="lineup-alert">
+          <span class="notice-icon" aria-hidden="true">!</span>
+          <div>
+            <strong>A starter is on a bye.</strong>
+            <p>Mason Cole won’t play this week. Replace him before saving.</p>
+          </div>
+          <a href="edit-lineup.html?team=strategists&amp;slot=1" data-fix-lineup
+            >Fix lineup <span aria-hidden="true">→</span></a
+          >
+        </div>
+        <div class="details-grid">
+          <section class="roster-section" aria-labelledby="starting-title">
+            <div class="section-heading">
+              <h2 id="starting-title">Starting lineup</h2>
+              <span class="small-label">9 STARTING SLOTS</span>
+            </div>
+            <div class="table-wrap">
+              <table class="roster-table">
+                <caption class="sr-only">
+                  Week 7 starting lineup, availability and projected fantasy
+                  points
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Slot</th>
+                    <th scope="col">Player</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" class="number">Proj. pts</th>
+                  </tr>
+                </thead>
+                <tbody id="starter-rows">
+                  <tr data-player="carter">
+                    <th scope="row"><span class="slot">QB</span></th>
+                    <td>
+                      <span class="player-name">Alex Carter</span
+                      ><span class="subtext">QB</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">23.0</td>
+                  </tr>
+                  <tr data-player="cole">
+                    <th scope="row"><span class="slot">RB 1</span></th>
+                    <td>
+                      <span class="player-name">Mason Cole</span
+                      ><span class="subtext">RB</span>
+                    </td>
+                    <td><span class="status bye">Bye</span></td>
+                    <td class="number">0.0</td>
+                  </tr>
+                  <tr data-player="reed">
+                    <th scope="row"><span class="slot">RB 2</span></th>
+                    <td>
+                      <span class="player-name">Devin Reed</span
+                      ><span class="subtext">RB</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">18.2</td>
+                  </tr>
+                  <tr data-player="brooks">
+                    <th scope="row"><span class="slot">WR 1</span></th>
+                    <td>
+                      <span class="player-name">Evan Brooks</span
+                      ><span class="subtext">WR</span>
+                    </td>
+                    <td>
+                      <span class="status questionable">Questionable</span>
+                    </td>
+                    <td class="number">16.3</td>
+                  </tr>
+                  <tr data-player="grant">
+                    <th scope="row"><span class="slot">WR 2</span></th>
+                    <td>
+                      <span class="player-name">Leo Grant</span
+                      ><span class="subtext">WR</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">14.1</td>
+                  </tr>
+                  <tr data-player="hayes">
+                    <th scope="row"><span class="slot">TE</span></th>
+                    <td>
+                      <span class="player-name">Owen Hayes</span
+                      ><span class="subtext">TE</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">11.4</td>
+                  </tr>
+                  <tr data-player="price">
+                    <th scope="row"><span class="slot">FLEX</span></th>
+                    <td>
+                      <span class="player-name">Noah Price</span
+                      ><span class="subtext">WR</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">12.4</td>
+                  </tr>
+                  <tr data-player="bears">
+                    <th scope="row"><span class="slot">DST</span></th>
+                    <td>
+                      <span class="player-name">Bears defense</span
+                      ><span class="subtext">DST</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">7.0</td>
+                  </tr>
+                  <tr data-player="west">
+                    <th scope="row"><span class="slot">K</span></th>
+                    <td>
+                      <span class="player-name">Ryan West</span
+                      ><span class="subtext">K</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">6.0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="fineprint">
+              Projected points are estimates for this fictional Week 7 scenario.
+              Questionable players may start, but check their availability; bye
+              players must be replaced.
+              <a href="help.html#lineup-guide">Lineup help</a>
+            </p>
+          </section>
+          <aside class="team-aside" aria-label="Matchup and bench">
+            <section class="matchup-summary">
+              <p class="eyebrow">WEEK 7 MATCHUP</p>
+              <h2>Matchup</h2>
+              <div class="projection-line">
+                <span data-team-name>Sunday Strategists</span
+                ><strong id="team-projection">108.4</strong>
+              </div>
+              <div class="projection-line">
+                <span>End Zone Elite</span><strong>112.1</strong>
+              </div>
+              <p class="fineprint">Projected points · Full PPR</p>
+              <div class="not-started">
+                Not started <span>0–0 live points</span>
+              </div>
+            </section>
+            <section aria-labelledby="bench-title">
+              <div class="section-heading">
+                <h2 id="bench-title">On the bench</h2>
+                <span class="small-label">PROJ. PTS</span>
+              </div>
+              <ul class="bench-list" id="bench-list">
+                <li>
+                  <div>
+                    <strong>Jordan Wells</strong><span>RB · Healthy</span>
+                  </div>
+                  <span class="number">17.0</span>
+                </li>
+                <li>
+                  <div>
+                    <strong>Caleb Stone</strong><span>RB · Healthy</span>
+                  </div>
+                  <span class="number">14.0</span>
+                </li>
+                <li>
+                  <div><strong>Sam King</strong><span>TE · Healthy</span></div>
+                  <span class="number">9.0</span>
+                </li>
+              </ul>
+              <a class="text-link" href="player-stats.html"
+                >Explore player stats <span aria-hidden="true">→</span></a
+              >
+            </section>
+          </aside>
+        </div>
+        <details class="disclosure">
+          <summary>Lineup notes &amp; scoring rules</summary>
+          <div>
+            <p>
+              A standard lineup has 1 QB, 2 RB, 2 WR, 1 TE, 1 FLEX, 1 DST and 1
+              K. FLEX accepts a running back, wide receiver or tight end.
+            </p>
+            <p>
+              Full PPR awards one point per reception. A bye-week or empty slot
+              must be replaced before saving. Questionable players can start,
+              but their availability should be checked.
+            </p>
+            <p>
+              Saving replaces this team’s Week 7 lineup in this browser. Earlier
+              versions are not archived.
+            </p>
+          </div>
+        </details>
+      </main>
+      <footer>
+        <div>
+          <span class="footer-brand">FANTASY MANAGER</span
+          ><a href="help.html">Help</a><a href="help.html#privacy">Privacy</a>
+        </div>
+        <span>Week 7 demo · Fictional players and sample scores</span>
+      </footer>
+    </div>
+  </body>
+</html>

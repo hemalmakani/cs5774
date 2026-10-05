@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <meta
+      name="description"
+      content="Fantasy Manager: a Week 7 fantasy football prototype for managing teams and lineups."
+    >
+    <title>Search results | Fantasy Manager</title>
+    <link rel="icon" href="assets/strategists.svg" type="image/svg+xml" >
+    <link rel="stylesheet" href="styles.css" >
+    <!-- jQuery is the only library; its license is retained in the local file. -->
+    <script src="js/vendor/jquery-4.0.0.min.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/interactions.js" defer></script>
+  </head>
+  <body data-page="search-results">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-title" href="index.html">FANTASY MANAGER</a>
+        <form class="site-search" role="search" aria-label="Site search"
+              action="search-results.html" method="get">
+          <label for="site-query" class="sr-only">Search Fantasy Manager</label>
+          <input type="text" id="site-query" name="q" maxlength="80"
+                 placeholder="Try running backs" aria-describedby="search-tip">
+          <button class="button" type="submit">Search</button>
+          <span class="sr-only" id="search-tip">Try the phrase running backs to see sample results.</span>
+        </form>
+        <div class="account-context">
+          <span>Week 7</span><span aria-hidden="true">|</span
+          ><a href="help.html#demo"
+            >Alex <span class="demo-label">Demo</span></a
+          >
+        </div>
+      </div>
+      <nav class="primary-nav" aria-label="Primary">
+        <div class="nav-inner">
+          <a href="index.html">Home</a
+          ><a href="teams.html">My Teams</a><a href="scores.html">NFL Scores</a
+          ><a href="player-stats.html">Player Stats</a>
+        </div>
+      </nav>
+    </header>
+    <div class="workspace">
+      <main id="main" tabindex="-1">
+        <noscript
+          ><p class="notice">
+            All sample pages are available. Enable JavaScript to filter teams,
+            search the site, manage a watchlist, create a team, or save lineup changes.
+          </p></noscript
+        >
+        <div class="page-heading">
+          <div>
+            <h1>Search results</h1>
+            <p class="lead">Find a player for your next lineup decision.</p>
+          </div>
+        </div>
+        <section aria-labelledby="search-results-heading">
+          <h2 id="search-results-heading">Search Fantasy Manager</h2>
+          <p id="search-status" role="status" aria-live="polite">Enter running backs in the header search to see sample results.</p>
+          <div id="search-results"></div>
+        </section>
+      </main>
+      <footer>
+        <div>
+          <span class="footer-brand">FANTASY MANAGER</span
+          ><a href="help.html">Help</a><a href="help.html#privacy">Privacy</a>
+        </div>
+        <span>Week 7 demo · Fictional players and sample scores</span>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <meta
+      name="description"
+      content="Fantasy Manager: a Week 7 fantasy football prototype for managing teams and lineups."
+    >
+    <title>Edit lineup | Fantasy Manager</title>
+    <link rel="icon" href="assets/strategists.svg" type="image/svg+xml" >
+    <link rel="stylesheet" href="styles.css" >
+    <!-- jQuery is the only library; its license is retained in the local file. -->
+    <script src="js/vendor/jquery-4.0.0.min.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/interactions.js" defer></script>
+  </head>
+  <body data-page="edit-lineup">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-title" href="index.html">FANTASY MANAGER</a>
+        <form class="site-search" role="search" aria-label="Site search"
+              action="search-results.html" method="get">
+          <label for="site-query" class="sr-only">Search Fantasy Manager</label>
+          <input type="text" id="site-query" name="q" maxlength="80"
+                 placeholder="Try running backs" aria-describedby="search-tip">
+          <button class="button" type="submit">Search</button>
+          <span class="sr-only" id="search-tip">Try the phrase running backs to see sample results.</span>
+        </form>
+        <div class="account-context">
+          <span>Week 7</span><span aria-hidden="true">|</span
+          ><a href="help.html#demo"
+            >Alex <span class="demo-label">Demo</span></a
+          >
+        </div>
+      </div>
+      <nav class="primary-nav" aria-label="Primary">
+        <div class="nav-inner">
+          <a href="index.html">Home</a
+          ><a href="teams.html" aria-current="page">My Teams</a
+          ><a href="scores.html">NFL Scores</a
+          ><a href="player-stats.html">Player Stats</a>
+        </div>
+      </nav>
+    </header>
+    <div class="workspace">
+      <main id="main" tabindex="-1">
+        <noscript
+          ><p class="notice">
+            All sample pages are available. Enable JavaScript to filter teams,
+            search the site, manage a watchlist, create a team, or save lineup changes.
+          </p></noscript
+        >
+
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="teams.html">My teams</a><span aria-hidden="true">/</span
+          ><a href="team-details.html" data-team-link data-team-name
+            >Sunday Strategists</a
+          ><span aria-hidden="true">/</span><span>Edit lineup</span>
+        </nav>
+        <div class="page-heading">
+          <div>
+            <h1>Week 7 lineup</h1>
+            <p class="eyebrow">SUNDAY STRATEGISTS · WEEK 7</p>
+          </div>
+          <div class="editor-projection">
+            <span class="small-label">PROJECTED POINTS</span>
+            <div>
+              <span id="base-projection">108.4</span
+              ><span class="projection-arrow" aria-hidden="true">→</span
+              ><strong id="draft-projection">108.4</strong
+              ><span id="projection-change">No changes</span>
+            </div>
+          </div>
+        </div>
+        <div class="notice warning" id="editor-warning">
+          <span class="notice-icon" aria-hidden="true">!</span>
+          <div>
+            <strong id="editor-warning-title"
+              >Replace Mason Cole: he is on a bye.</strong
+            >
+            <p id="editor-warning-copy">
+              Choose an eligible bench player for RB 1 before saving.
+            </p>
+          </div>
+        </div>
+        <div class="edit-grid">
+          <section class="move-panel" aria-labelledby="move-title">
+            <h2 id="move-title">Bench</h2>
+            <p>
+              Pick a player and a slot. The current starter moves to your bench.
+            </p>
+            <section class="editor-bench" aria-label="Available bench players">
+              <p class="small-label">PLAYER / STATUS / PROJECTED POINTS</p>
+              <ul class="bench-list" id="editor-bench-list">
+                <li>
+                  <div>
+                    <strong>Jordan Wells</strong><span>RB · Healthy</span>
+                  </div>
+                  <span class="number">17.0</span>
+                </li>
+                <li>
+                  <div>
+                    <strong>Caleb Stone</strong><span>RB · Healthy</span>
+                  </div>
+                  <span class="number">14.0</span>
+                </li>
+                <li>
+                  <div><strong>Sam King</strong><span>TE · Healthy</span></div>
+                  <span class="number">9.0</span>
+                </li>
+              </ul>
+            </section>
+            <form id="move-form">
+              <div class="field">
+                <label for="bench-player">Bench player</label
+                ><select id="bench-player">
+                  <option value="wells">
+                    Jordan Wells · RB · Healthy · 17.0 pts
+                  </option>
+                  <option value="stone">
+                    Caleb Stone · RB · Healthy · 14.0 pts
+                  </option>
+                  <option value="king">
+                    Sam King · TE · Healthy · 9.0 pts
+                  </option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="target-slot">Starting slot</label
+                ><select id="target-slot" aria-describedby="eligibility-help">
+                  <option value="1">RB 1 · Mason Cole · Bye</option>
+                  <option value="2">RB 2 · Devin Reed</option>
+                  <option value="6" selected>FLEX · Noah Price</option>
+                </select>
+              </div>
+              <p class="field-help" id="eligibility-help">
+                Only eligible slots are listed. FLEX accepts RB, WR or TE; DST
+                means defense and special teams.
+              </p>
+              <button type="submit" class="button">
+                Move player <span aria-hidden="true">→</span>
+              </button>
+            </form>
+            <div class="coach-note">
+              <strong>Try this move</strong>
+              <p>
+                Move Jordan Wells to FLEX for +4.6 projected points. Then move
+                Caleb Stone to RB 1 to resolve the bye.
+              </p>
+            </div>
+            <div class="move-feedback" id="move-feedback" role="status">
+              No changes yet.
+            </div>
+            <button
+              class="button secondary"
+              id="undo-move"
+              type="button"
+              disabled
+            >
+              Undo last move
+            </button>
+          </section>
+          <section aria-labelledby="draft-title">
+            <div class="section-heading">
+              <h2 id="draft-title">Starting lineup</h2>
+              <span class="small-label" id="draft-state">SAVED LINEUP</span>
+            </div>
+            <p class="field-help">
+              Questionable players may start; check their availability. Bye
+              players cannot be saved as starters.
+              <a href="help.html#lineup-guide">Lineup help</a>
+            </p>
+            <div class="table-wrap">
+              <table class="roster-table">
+                <caption class="sr-only">
+                  Week 7 starting lineup, availability and projected fantasy
+                  points
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Slot</th>
+                    <th scope="col">Player</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" class="number">Proj. pts</th>
+                  </tr>
+                </thead>
+                <tbody id="starter-rows">
+                  <tr data-player="carter">
+                    <th scope="row"><span class="slot">QB</span></th>
+                    <td>
+                      <span class="player-name">Alex Carter</span
+                      ><span class="subtext">QB</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">23.0</td>
+                  </tr>
+                  <tr data-player="cole">
+                    <th scope="row"><span class="slot">RB 1</span></th>
+                    <td>
+                      <span class="player-name">Mason Cole</span
+                      ><span class="subtext">RB</span>
+                    </td>
+                    <td><span class="status bye">Bye</span></td>
+                    <td class="number">0.0</td>
+                  </tr>
+                  <tr data-player="reed">
+                    <th scope="row"><span class="slot">RB 2</span></th>
+                    <td>
+                      <span class="player-name">Devin Reed</span
+                      ><span class="subtext">RB</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">18.2</td>
+                  </tr>
+                  <tr data-player="brooks">
+                    <th scope="row"><span class="slot">WR 1</span></th>
+                    <td>
+                      <span class="player-name">Evan Brooks</span
+                      ><span class="subtext">WR</span>
+                    </td>
+                    <td>
+                      <span class="status questionable">Questionable</span>
+                    </td>
+                    <td class="number">16.3</td>
+                  </tr>
+                  <tr data-player="grant">
+                    <th scope="row"><span class="slot">WR 2</span></th>
+                    <td>
+                      <span class="player-name">Leo Grant</span
+                      ><span class="subtext">WR</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">14.1</td>
+                  </tr>
+                  <tr data-player="hayes">
+                    <th scope="row"><span class="slot">TE</span></th>
+                    <td>
+                      <span class="player-name">Owen Hayes</span
+                      ><span class="subtext">TE</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">11.4</td>
+                  </tr>
+                  <tr data-player="price">
+                    <th scope="row"><span class="slot">FLEX</span></th>
+                    <td>
+                      <span class="player-name">Noah Price</span
+                      ><span class="subtext">WR</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">12.4</td>
+                  </tr>
+                  <tr data-player="bears">
+                    <th scope="row"><span class="slot">DST</span></th>
+                    <td>
+                      <span class="player-name">Bears defense</span
+                      ><span class="subtext">DST</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">7.0</td>
+                  </tr>
+                  <tr data-player="west">
+                    <th scope="row"><span class="slot">K</span></th>
+                    <td>
+                      <span class="player-name">Ryan West</span
+                      ><span class="subtext">K</span>
+                    </td>
+                    <td><span class="status healthy">Healthy</span></td>
+                    <td class="number">6.0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+        <div class="save-bar">
+          <div class="save-explanation">
+            <p id="save-hint">
+              Replace Mason Cole: he is on a bye. Saving is disabled.
+            </p>
+            <p id="cancel-hint">Cancel discards all unsaved changes.</p>
+          </div>
+          <div>
+            <a
+              class="button secondary"
+              href="team-details.html"
+              data-team-link
+              aria-describedby="cancel-hint"
+              >Cancel</a
+            ><button
+              class="button"
+              id="save-lineup"
+              type="button"
+              disabled
+              aria-describedby="save-hint"
+            >
+              Save lineup
+            </button>
+          </div>
+        </div>
+        <p id="save-error" class="form-error" role="alert" hidden></p>
+      </main>
+      <footer>
+        <div>
+          <span class="footer-brand">FANTASY MANAGER</span
+          ><a href="help.html">Help</a><a href="help.html#privacy">Privacy</a>
+        </div>
+        <span>Week 7 demo · Fictional players and sample scores</span>
+      </footer>
+    </div>
+  </body>
+</html>

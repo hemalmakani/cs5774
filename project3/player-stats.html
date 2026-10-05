@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <meta
+      name="description"
+      content="Fantasy Manager: a Week 7 fantasy football prototype for managing teams and lineups."
+    >
+    <title>Player stats | Fantasy Manager</title>
+    <link rel="icon" href="assets/strategists.svg" type="image/svg+xml" >
+    <link rel="stylesheet" href="styles.css" >
+    <!-- jQuery is the only library; its license is retained in the local file. -->
+    <script src="js/vendor/jquery-4.0.0.min.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/interactions.js" defer></script>
+  </head>
+  <body data-page="player-stats">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-title" href="index.html">FANTASY MANAGER</a>
+        <form class="site-search" role="search" aria-label="Site search"
+              action="search-results.html" method="get">
+          <label for="site-query" class="sr-only">Search Fantasy Manager</label>
+          <input type="text" id="site-query" name="q" maxlength="80"
+                 placeholder="Try running backs" aria-describedby="search-tip">
+          <button class="button" type="submit">Search</button>
+          <span class="sr-only" id="search-tip">Try the phrase running backs to see sample results.</span>
+        </form>
+        <div class="account-context">
+          <span>Week 7</span><span aria-hidden="true">|</span
+          ><a href="help.html#demo"
+            >Alex <span class="demo-label">Demo</span></a
+          >
+        </div>
+      </div>
+      <nav class="primary-nav" aria-label="Primary">
+        <div class="nav-inner">
+          <a href="index.html">Home</a><a href="teams.html">My Teams</a
+          ><a href="scores.html">NFL Scores</a
+          ><a href="player-stats.html" aria-current="page">Player Stats</a>
+        </div>
+      </nav>
+    </header>
+    <div class="workspace">
+      <main id="main" tabindex="-1">
+        <noscript
+          ><p class="notice">
+            All sample pages are available. Enable JavaScript to filter teams,
+            search the site, manage a watchlist, create a team, or save lineup changes.
+          </p></noscript
+        >
+
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">SCOUT YOUR NEXT MOVE</p>
+            <h1>Player stats</h1>
+            <p class="lead">
+              Week 7 · Fictional player pool · Full PPR projections.
+            </p>
+          </div>
+        </div>
+        <div id="player-workspace">
+        <form class="filter-bar" role="search" id="player-filter">
+          <div class="field grow">
+            <label for="player-search">Search players or positions</label
+            ><input
+              type="search"
+              id="player-search"
+              placeholder="Try Jordan Wells or RB"
+            >
+          </div>
+          <button class="button secondary" type="reset">Clear search</button>
+        </form>
+        <p id="player-count" class="result-count" role="status">12 players</p>
+        <div class="table-wrap">
+          <table>
+            <caption class="sr-only">
+              Player availability and projected points
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Player</th>
+                <th scope="col">Position</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="number">Proj. pts</th>
+                <th scope="col">Watchlist</th>
+              </tr>
+            </thead>
+            <tbody id="player-stat-rows">
+              <tr id="player-carter" data-player-id="carter" data-search="alex carter qb">
+                <th scope="row">Alex Carter</th>
+                <td>QB</td>
+                <td><span class="status healthy">Healthy</span></td>
+                <td class="number">23.0</td>
+              <td><button type="button" class="button secondary watch-toggle" data-player-id="carter" aria-pressed="false" aria-label="Watch Alex Carter">Watch</button></td>
+              </tr>
+              <tr id="player-cole" data-player-id="cole" data-search="mason cole rb">
+                <th scope="row">Mason Cole</th>
+                <td>RB</td>
+                <td><span class="status bye">Bye</span></td>
+                <td class="number">0.0</td>
+              <td><button type="button" class="button secondary watch-toggle" data-player-id="cole" aria-pressed="false" aria-label="Watch Mason Cole">Watch</button></td>
+              </tr>
+              <tr id="player-reed" data-player-id="reed" data-search="devin reed rb">
+                <th scope="row">Devin Reed</th>
+                <td>RB</td>
+                <td><span class="status healthy">Healthy</span></td>
+                <td class="number">18.2</td>
+              <td><button type="button" class="button secondary watch-toggle" data-player-id="reed" aria-pressed="false" aria-label="Watch Devin Reed">Watch</button></td>
+              </tr>
+              <tr id="player-brooks" data-player-id="brooks" data-search="evan brooks wr">
+                <th scope="row">Evan Brooks</th>
+                <td>WR</td>
+                <td><span class="status questionable">Questionable</span></td>
+                <td class="number">16.3</td>
+              <td><button type="button" class="button secondary watch-toggle" data-player-id="brooks" aria-pressed="false" aria-label="Watch Evan Brooks">Watch</button></td>
+              </tr>
+              <tr id="player-grant" data-player-id="grant" data-search="leo grant wr">
+                <th scope="row">Leo Grant</th>
+                <td>WR</td>
+                <td><span class="status healthy">Healthy</span></td>
+                <td class="number">14.1</td>
+              <td><button type="button" class="button secondary watch-toggle" data-player-id="grant" aria-pressed="false" aria-label="Watch Leo Grant">Watch</button></td>
+              </tr>
+              <tr id="player-hayes" data-player-id="hayes" data-search="owen hayes te">
+                <th scope="row">Owen Hayes</th>
+                <td>TE</td>
+                <td><span class="status healthy">Healthy</span></td>
+                <td class="number">11.4</td>
+              <td><button type="button" class="button secondary watch-toggle" data-player-id="hayes" aria-pressed="false" aria-label="Watch Owen Hayes">Watch</button></td>
+              </tr>
+              <tr id="player-price" data-player-id="price" data-search="noah price wr">
+                <th scope="row">Noah Price</th>
+                <td>WR</td>
+                <td><span class="status healthy">Healthy</span></td>
+                <td class="number">12.4</td>
+              <td><button type="button" class="button secondary watch-toggle" data-player-id="price" aria-pressed="false" aria-label="Watch Noah Price">Watch</button></td>
+              </tr>
+              <tr id="player-bears" data-player-id="bears" data-search="bears defense dst">
+                <th scope="row">Bears defense</th>
+                <td>DST</td>
+                <td><span class="status healthy">Healthy</span></td>
+                <td class="number">7.0</td>
+              <td><button type="button" class="button secondary watch-toggle" data-player-id="bears" aria-pressed="false" aria-label="Watch Bears defense">Watch</button></td>
+              </tr>
+              <tr id="player-west" data-player-id="west" data-search="ryan west k">
+                <th scope="row">Ryan West</th>
+                <td>K</td>
+                <td><span class="status healthy">Healthy</span></td>
+                <td class="number">6.0</td>
+              <td><button type="button" class="button secondary watch-toggle" data-player-id="west" aria-pressed="false" aria-label="Watch Ryan West">Watch</button></td>
+              </tr>
+              <tr id="player-wells" data-player-id="wells" data-search="jordan wells rb">
+                <th scope="row">Jordan Wells</th>
+                <td>RB</td>
+                <td><span class="status healthy">Healthy</span></td>
+                <td class="number">17.0</td>
+              <td><button type="button" class="button secondary watch-toggle" data-player-id="wells" aria-pressed="false" aria-label="Watch Jordan Wells">Watch</button></td>
+              </tr>
+              <tr id="player-stone" data-player-id="stone" data-search="caleb stone rb">
+                <th scope="row">Caleb Stone</th>
+                <td>RB</td>
+                <td><span class="status healthy">Healthy</span></td>
+                <td class="number">14.0</td>
+              <td><button type="button" class="button secondary watch-toggle" data-player-id="stone" aria-pressed="false" aria-label="Watch Caleb Stone">Watch</button></td>
+              </tr>
+              <tr id="player-king" data-player-id="king" data-search="sam king te">
+                <th scope="row">Sam King</th>
+                <td>TE</td>
+                <td><span class="status healthy">Healthy</span></td>
+                <td class="number">9.0</td>
+              <td><button type="button" class="button secondary watch-toggle" data-player-id="king" aria-pressed="false" aria-label="Watch Sam King">Watch</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="empty-state" id="stats-empty" hidden>
+          No players match your search.
+        </p>
+        <section class="watchlist-section" aria-labelledby="watchlist-title">
+          <h2 id="watchlist-title">Your watchlist</h2>
+          <p id="watchlist-count">0 players watched</p>
+          <p id="watchlist-empty" class="field-help">Choose Watch beside a player to keep them here for comparison.</p>
+          <ul id="watchlist" class="watchlist"></ul>
+          <p id="watchlist-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+        </section>
+        </div>
+      </main>
+      <footer>
+        <div>
+          <span class="footer-brand">FANTASY MANAGER</span
+          ><a href="help.html">Help</a><a href="help.html#privacy">Privacy</a>
+        </div>
+        <span>Week 7 demo · Fictional players and sample scores</span>
+      </footer>
+    </div>
+  </body>
+</html>

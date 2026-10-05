@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <meta
+      name="description"
+      content="Fantasy Manager: a Week 7 fantasy football prototype for managing teams and lineups."
+    >
+    <title>Overview | Fantasy Manager</title>
+    <link rel="icon" href="assets/strategists.svg" type="image/svg+xml" >
+    <link rel="stylesheet" href="styles.css" >
+    <!-- jQuery is the only library; its license is retained in the local file. -->
+    <script src="js/vendor/jquery-4.0.0.min.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/interactions.js" defer></script>
+  </head>
+  <body data-page="home">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-title" href="index.html">FANTASY MANAGER</a>
+        <form class="site-search" role="search" aria-label="Site search"
+              action="search-results.html" method="get">
+          <label for="site-query" class="sr-only">Search Fantasy Manager</label>
+          <input type="text" id="site-query" name="q" maxlength="80"
+                 placeholder="Try running backs" aria-describedby="search-tip">
+          <button class="button" type="submit">Search</button>
+          <span class="sr-only" id="search-tip">Try the phrase running backs to see sample results.</span>
+        </form>
+        <div class="account-context">
+          <span>Week 7</span><span aria-hidden="true">|</span
+          ><a href="help.html#demo"
+            >Alex <span class="demo-label">Demo</span></a
+          >
+        </div>
+      </div>
+      <nav class="primary-nav" aria-label="Primary">
+        <div class="nav-inner">
+          <a href="index.html" aria-current="page">Home</a
+          ><a href="teams.html">My Teams</a><a href="scores.html">NFL Scores</a
+          ><a href="player-stats.html">Player Stats</a>
+        </div>
+      </nav>
+    </header>
+    <div class="workspace">
+      <main id="main" tabindex="-1">
+        <noscript
+          ><p class="notice">
+            All sample pages are available. Enable JavaScript to filter teams,
+            search the site, manage a watchlist, create a team, or save lineup changes.
+          </p></noscript
+        >
+        <div class="page-heading">
+          <div>
+            <h1>Welcome back, Alex</h1>
+            <p class="lead">Your Week 7 overview</p>
+          </div>
+        </div>
+        <div class="home-overview">
+          <section
+            class="home-panel team-overview"
+            aria-labelledby="matchup-title"
+          >
+            <div class="panel-heading">
+              <h2 id="matchup-title">Your team</h2>
+            </div>
+            <div class="panel-content">
+              <form class="featured-picker" id="featured-form">
+                <div class="field">
+                  <label for="featured-team">Featured team</label
+                  ><select id="featured-team" name="team">
+                    <option value="strategists">
+                      Sunday Strategists · Friends League
+                    </option>
+                    <option value="runners">
+                      Red Zone Runners · Office League
+                    </option>
+                    <option value="giants">
+                      Goal Line Giants · Family League
+                    </option>
+                  </select>
+                </div>
+                <p class="field-help">
+                  Sunday Strategists is shown first. Choose another team to
+                  switch leagues.
+                </p>
+              </form>
+              <div class="home-team-name">
+                <img
+                  class="crest"
+                  id="featured-crest"
+                  src="assets/strategists.svg"
+                  width="96"
+                  height="96"
+                  alt="Sunday Strategists star shield"
+                >
+                <div>
+                  <h3 id="featured-name">Sunday Strategists</h3>
+                  <p id="featured-league">Friends League · Full PPR</p>
+                  <span class="small-label" id="featured-record"
+                    >YOUR TEAM · 4–2</span
+                  >
+                </div>
+              </div>
+              <p class="opponent-line">
+                <img
+                  src="assets/elite.svg"
+                  width="96"
+                  height="96"
+                  alt="End Zone Elite crown crest"
+                >
+                vs. End Zone Elite
+                <span
+                  >· Projected: <strong id="home-projection">108.4</strong> –
+                  <strong>112.1</strong></span
+                >
+              </p>
+              <p class="field-help">Week 7 · Matchup not started</p>
+              <div class="panel-actions">
+                <a class="button" href="team-details.html" id="featured-link"
+                  >View team</a
+                ><a href="teams.html"
+                  >All teams <span aria-hidden="true">→</span></a
+                >
+              </div>
+            </div>
+          </section>
+          <section
+            class="home-panel alert-panel"
+            aria-labelledby="home-alert-title"
+          >
+            <div class="panel-heading">
+              <h2 id="home-alert-title">Lineup alert</h2>
+            </div>
+            <div class="panel-content">
+              <div class="notice warning" id="lineup-alert">
+                <span class="notice-icon" aria-hidden="true">!</span>
+                <div>
+                  <strong>A starter is on a bye.</strong>
+                  <p>
+                    Mason Cole won’t play this week. Choose another starting RB.
+                  </p>
+                </div>
+                <a
+                  class="button"
+                  href="edit-lineup.html?team=strategists&amp;slot=1"
+                  data-fix-lineup
+                  >Fix lineup</a
+                >
+              </div>
+              <p class="notice success-message" id="lineup-ready" hidden>
+                Your starting lineup is ready for Week 7.
+              </p>
+              <p class="field-help">
+                Fix lineup opens the editor at the affected slot. Saving is
+                disabled until every slot has an eligible player who is not on a
+                bye.
+              </p>
+            </div>
+          </section>
+        </div>
+        <section class="home-panel home-scores" aria-labelledby="scores-title">
+          <div class="panel-heading">
+            <h2 id="scores-title">NFL scores</h2>
+            <a href="scores.html"
+              >All scores <span aria-hidden="true">→</span></a
+            >
+          </div>
+          <div class="panel-content">
+            <p class="score-line">
+              <strong>BUF 14 – NYJ 10</strong
+              ><span>Q3 · Sample live state</span>
+            </p>
+            <p class="score-line">
+              <strong>LAC 21 – SEA 24</strong><span>Final · Sample result</span>
+            </p>
+            <p class="field-help">
+              An illustrative Week 7 snapshot. Scores do not update.
+            </p>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <div>
+          <span class="footer-brand">FANTASY MANAGER</span
+          ><a href="help.html">Help</a><a href="help.html#privacy">Privacy</a>
+        </div>
+        <span>Week 7 demo · Fictional players and sample scores</span>
+      </footer>
+    </div>
+  </body>
+</html>
